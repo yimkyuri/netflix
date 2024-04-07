@@ -14,7 +14,7 @@ const Banner = () => {
   }
   return (
     <div style={{
-        backgroundImage:'url('+`https://image.tmdb.org/t/p/w1066_and_h600_bestv2/${data?.results[0].backdrop_path}`+')'
+        backgroundImage:`url(https://image.tmdb.org/t/p/w1066_and_h600_bestv2/${data?.results[0].backdrop_path})`
     }} className='banner'>
         <div className='banner-text-area'>
             <h1>{data?.results[0].title}</h1>
