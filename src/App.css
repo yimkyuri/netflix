@@ -1,6 +1,6 @@
 body {background-color: #000000; color:#ffffff;}
 .navbar-brand {width:100px;}
-.navbar-brand img {width: 100%;}
+.navbar-brand svg {width: 100%;}
 .navbar-black {background-color: #000000; color:#ffffff;}
 .nav-bg-black .nav-link {color:#ffffff;}
 .navbar-black .nav-link.active {color:#ffffff; text-decoration: underline;}

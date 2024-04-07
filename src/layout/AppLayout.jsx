@@ -13,7 +13,9 @@ const AppLayout = () => {
     <div>
       <Navbar expand="lg" variant='black'>
         <Container fluid>
-          <Navbar.Brand href="#" className='w100' onClick={() => navigate('/')}><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt='' /></Navbar.Brand>
+          <Navbar.Brand href="#" className='w100' onClick={() => navigate('/')}>
+            <img src='./images/logo.png' alt='' />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
