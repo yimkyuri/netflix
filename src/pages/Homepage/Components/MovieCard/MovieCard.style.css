@@ -1,0 +1,36 @@
+.movie-card {
+    width: 220px;
+    height: 330px;
+    background-size: cover;
+    cursor: pointer;
+    transition: 0.5s;
+    overflow: hidden;
+}
+.overlay {
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.9);
+    opacity: 0;
+    transition: all 0.5s;
+    color:#ffffff;
+    font-weight: bold;
+    overflow-wrap: break-word;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.overlay .genre {
+    margin-bottom:5px;
+}
+.movie-card:hover .overlay{
+    opacity:1;
+}
+.movie-card h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+.overlay .badge {margin-right:5px;}
+.overlay .badge:last-child {margin-right:0;}
+.overlay .adult {font-size: 12px; text-transform: uppercase; margin-top:10px; color: #666;}
+.overlay .adult.over18 {color:red;}
