@@ -1,0 +1,30 @@
+.carousel-container {
+    overflow: hidden;
+    padding-top:20px;
+}
+.movie-slider {
+    margin-left:20px;
+}
+.react-multi-carousel-track {
+    margin-left:-80px;
+}
+.movie-slider-wrap {
+    margin-top:80px;
+}
+.movie-slider-wrap h3 {
+    padding-left: 2rem;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 768px) {   
+    .movie-slider {
+        margin-left:0;
+    }
+    .react-multi-carousel-track {
+        margin-left:0;
+    }
+    .movie-slider-wrap {
+        margin-top: 40px;
+    }
+    
+}

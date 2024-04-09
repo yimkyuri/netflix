@@ -1,6 +1,7 @@
 .banner {
     height:56vh;
     background-size: cover;
+    background-position: 50% 50%;
     position: relative;
 }
 .banner::before {
@@ -20,4 +21,12 @@
     padding: 2rem;
     position:relative;
     z-index: 1;
+}
+
+@media screen and (max-width: 768px) {    
+    .banner-text-area {
+        width: 100%;
+        justify-content: end;
+    }
+    
 }
