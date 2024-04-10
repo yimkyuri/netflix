@@ -1,0 +1,36 @@
+.pagination {
+    margin-top:40px;
+}
+.page-link:hover,
+.page-link:focus,
+.page-link {
+    background:none;
+    border: 1px solid red;
+    color:#ffffff;
+}
+.active>.page-link, 
+.page-link.active {
+    background:red;
+    border:1px solid red;
+}
+.disabled>.page-link, 
+.disabled>.page-link:hover, 
+.disabled>.page-link:focus, 
+.page-link.disabled:hover,
+.page-link.disabled:focus,
+.page-link.disabled {
+    background:none;
+    color:#666;
+    border:1px solid red;
+}
+
+
+@media screen and (max-width: 990px) {
+    .movie-card {
+        width: 100%;
+        background-position: 50% 50%;
+    }
+    .overlay {opacity: 1; 
+        background:linear-gradient(to top, black, transparent);
+    }
+}

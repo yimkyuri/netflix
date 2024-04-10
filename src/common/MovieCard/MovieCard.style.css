@@ -5,6 +5,7 @@
     cursor: pointer;
     transition: 0.5s;
     overflow: hidden;
+    margin-bottom:10px;
 }
 .overlay {
     width: 100%;
