@@ -5,6 +5,7 @@
     overflow: hidden;
     margin-bottom:10px;
     padding-bottom:150%;
+    position:relative;
 }
 .overlay {
     position:absolute;
