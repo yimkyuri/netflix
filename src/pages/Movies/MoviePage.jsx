@@ -12,7 +12,8 @@ const MoviePage = () => {
   const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(1);
   const keyword = query.get("q");
-  const [filterGenre, setFilterGenre] = useState("장르");
+  const [filterGenre, setFilterGenre] = useState("장르별");
+  const [dropDownOrder,setDropDownOrder] =useState('정렬기준');
 
   const { data, isLoading, isError, error } = useSearchMovieQuery({
     keyword,
@@ -31,10 +32,29 @@ const MoviePage = () => {
     }
   }, [data]);
 
+
+  const orderPopular=()=>{
+    if(!data?.results) return;
+    const sorted =[...data.results].sort((a,b)=>b.popularity - a.popularity);
+    setSortedData(sorted);
+    setDropDownOrder('인기 많은순');
+    setFilterGenre('장르별');
+  }
+
+  const reversePopular=()=>{
+    if(!data?.results) return;
+    const sorted =[...data.results].sort((a,b)=>a.popularity - b.popularity);
+    setSortedData(sorted);
+    setDropDownOrder('인기 적은순');
+    setFilterGenre('장르별');
+  }
+
   const genreSelect = (id, genre) => {
     setSortedData(data.results.filter((genre) => genre.genre_ids.includes(id)));
     setFilterGenre(genre);
+    setDropDownOrder('정렬기준');
   };
+
 
   if (isLoading) {
     <h1>Loading...</h1>;
@@ -46,19 +66,26 @@ const MoviePage = () => {
     <Container>
       <Row>
         <Col lg={4} xs={12}>
+
           <Dropdown>
-            <Dropdown.Toggle
-              className="w-100 mb-2"
-              variant="danger"
-              id="filter-genre"
-            >
+              <Dropdown.Toggle className='w-100 mb-2' variant="danger" id="dropdown-popular">
+                {dropDownOrder}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={orderPopular}>인기 많은순</Dropdown.Item>
+                <Dropdown.Item onClick={reversePopular}>인기 적은순</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            
+          <Dropdown>
+            <Dropdown.Toggle className="w-100 mb-2" variant="danger" id="filter-genre" >
               {filterGenre}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
               {genreData?.map((item, index) => (
-                <Dropdown.Item
-                  key={index}
+                <Dropdown.Item key={index}
                   onClick={() => genreSelect(item.id, item.name)}
                 >
                   {item.name}
