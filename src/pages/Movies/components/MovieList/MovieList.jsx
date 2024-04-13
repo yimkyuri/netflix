@@ -17,7 +17,7 @@ const MovieList = ({ data, page, setPage, filterGenre, filterSort }) => {
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
   };
-  
+
   return (
     <Col lg={12}>
       <Row>

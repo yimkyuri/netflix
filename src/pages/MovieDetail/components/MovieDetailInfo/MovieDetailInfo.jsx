@@ -8,6 +8,12 @@ const MovieDetailInfo = ({ movie, id }) => {
   const [show, setShow] = useState(false);
   const { data: video } = useMovieTrailerQuery({ id });
 
+  const priceToString = (price) => {
+    if (price) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+  };
+
   const opts = {
     height: '100%',
     width: '100%',
@@ -36,14 +42,26 @@ const MovieDetailInfo = ({ movie, id }) => {
           <span><img src='https://cdn-icons-png.flaticon.com/512/6005/6005837.png' alt='' />{movie?.vote_count}</span>
         </div>
         <ul className='detail-text-info'>
+
+        {movie && movie.budget ? (
           <li>
             <strong>Budget</strong>
-            $ {movie?.budget}
+              $ {priceToString(movie.budget)}
           </li>
+          ) : (
+            <span></span>
+          )}
+
+
+        {movie && movie.revenue ? (
           <li>
             <strong>Revenue</strong>
-            $ {movie?.revenue}
+            $ {priceToString(movie.revenue)}
           </li>
+          ) : (
+            <span></span>
+          )}
+
           <li>
             <strong>Release Date</strong>
             {movie?.release_date}
@@ -63,15 +81,13 @@ const MovieDetailInfo = ({ movie, id }) => {
         show={show}
         centered={true}
         onHide={() => setShow(false)}
-        dialogClassName='modal-90w'
-        contentClassName='modal-style'
+        dialogClassName='modal-style'
       >
-        <Modal.Header closeVariant='white' closeButton />
+        <Modal.Header closeButton />
         <Modal.Body>
           <YouTube
             videoId={video && video[0]?.key}
             opts={opts}
-            style={{ height: '100%' }}
             onReady={(event) => event.target.mute()}
           />
         </Modal.Body>

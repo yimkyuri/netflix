@@ -39,7 +39,8 @@ const MovieDetailPage = () => {
       </div>
       <MovieDetailInfo movie={movie} id={id} />
       <ReviewBox review={review} />
-      <Container className='mt-5 mb-5'>
+      <p className='related-movies-title'>RELATED MOVIES</p>
+      <Container>
         <Row>
           <Col>
             <RelatedMoviesBox relatedMovies={relatedMovies} />

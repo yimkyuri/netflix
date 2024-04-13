@@ -7,7 +7,7 @@ const ReviewBox = ({ review }) => {
   
   return (
     <div className='review-box-area'>
-      <p className='title'>RELATED MOVIES</p>
+      <p className='title'>REVIEWS</p>
       {reviews.length === 0 ? (
         <p className='no-contents'>리뷰가 없습니다.</p>
       ) : (
