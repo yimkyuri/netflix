@@ -23,7 +23,7 @@ const MovieList = ({ data, page, setPage, filterGenre, filterSort }) => {
       <Row>
         {filterData.length === 0 ? (
           <div className="py-4 mt-4 text-center">
-            해당 조건에 맞는 목록이 없습니다
+            
           </div>
         ) : (
           filterData.map((movie) => (
