@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Badge } from 'react-bootstrap';
 import "./MovieCard.style.css"
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 
 const MovieCard = ({ movie }) => {
+  const pointAvarage = movie.vote_average.toFixed(1);
   const {data:genreData} = useMovieGenreQuery();
   const showGenre = (genreIdList)  => {
     if (!genreData) return [];
@@ -14,22 +16,32 @@ const MovieCard = ({ movie }) => {
     return genreNameList;
   }
   return (
-    <div style={{        
-        backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path})`
-    }} className='movie-card'>
-      <div className='overlay'>
-        <h1>{movie.title}</h1>
-        <div className='genre'>
-            {showGenre(movie.genre_ids).map((id) => (
-                <Badge bg='danger'>{id}</Badge>
-            ))}
-        </div>
-        <div className='vote_averge'>{movie.vote_averge}</div>
-        <div className='popularity'>{movie.popularity}</div>
-        <div className={movie.adult?'adult over18':'adult under18'}>
-            {movie.adult?'over18':'under18'}
-        </div>
+    <div className='movie-card'>
+      <div className="card-thumb">
+        {movie.poster_path ? (
+          <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} alt="" />
+        ) : (
+          <div className="card_noimage">이미지 준비중</div>
+        )}
       </div>
+      <Link to={`/movies/${movie.id}`} className="card_link">
+        <div className='overlay'>
+          <h1>{movie.title}</h1>
+          <div className='genre'>
+              {showGenre(movie.genre_ids).map((id) => (
+                  <Badge bg='danger'>{id}</Badge>
+              ))}
+          </div>
+          <div className='vote_averge'>{movie.vote_averge}</div>
+          <div className="card_point">
+            {pointAvarage}
+            <span>/10</span>
+          </div>
+          <div className={movie.adult?'adult over18':'adult under18'}>
+              {movie.adult?'over18':'under18'}
+          </div>
+        </div>
+      </Link>
     </div>
   )
 }

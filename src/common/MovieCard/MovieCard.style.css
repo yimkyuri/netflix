@@ -1,11 +1,22 @@
 .movie-card {
-    background-size: cover;
     cursor: pointer;
     transition: 0.5s;
     overflow: hidden;
     margin-bottom:10px;
     padding-bottom:150%;
     position:relative;
+}
+.movie-card .card-thumb {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+}
+.movie-card .card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .overlay {
     position:absolute;

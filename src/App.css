@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reem+Kufi+Fun:wght@400..700&display=swap');
 
 body {background-color: #000000; color:#ffffff; font-family: "Reem Kufi Fun", sans-serif;}
-.navbar-brand {width:100px;}
+.navbar-brand {width:100px; cursor: pointer;}
 .navbar-brand svg {width: 100%;}
 .navbar-black {background-color: #000000; color:#ffffff;}
 .nav-bg-black .nav-link {color:#ffffff;}
