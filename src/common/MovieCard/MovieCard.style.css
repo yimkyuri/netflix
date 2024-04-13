@@ -49,3 +49,5 @@
 .overlay .badge:last-child {margin-right:0;}
 .overlay .adult {font-size: 12px; text-transform: uppercase; margin-top:10px; color: #666;}
 .overlay .adult.over18 {color:red;}
+.card-link {overflow: hidden;}
+.card-point span {opacity:0.5; font-weight: 100;}

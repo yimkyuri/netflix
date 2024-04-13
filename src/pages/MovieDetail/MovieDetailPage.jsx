@@ -9,6 +9,8 @@ import ReviewBox from './components/ReviewBox/ReviewBox';
 import { useMovieReviewQuery } from '../../hooks/useMovieReview';
 import './MovieDetailPage.style.css';
 
+import ScrollToTop from '../../ScrollToTop';
+
 const MovieDetailPage = () => {
   const { id } = useParams();
   const {
@@ -30,11 +32,12 @@ const MovieDetailPage = () => {
 
   return (
     <div>
+      <ScrollToTop />
       <div className='detail-banner'>
         {movie && movie.backdrop_path ? (
           <img className='detail-banner-img' src={`https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces${movie?.backdrop_path}`} alt="" />
         ) : (
-          <img className='detail-banner-img' src={'https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=1920&auto=format'} alt="" />
+          <img className='detail-banner-img' src={'https://images.unsplash.com/photo-1514483127413-f72f273478c3?q=80&w=1920&auto=format'} alt="" />
         )}
       </div>
       <MovieDetailInfo movie={movie} id={id} />

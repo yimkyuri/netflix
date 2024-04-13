@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { Badge } from 'react-bootstrap';
 import "./MovieCard.style.css"
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 
 const MovieCard = ({ movie }) => {
   const pointAvarage = movie.vote_average.toFixed(1);
+  const navigate = useNavigate();
   const {data:genreData} = useMovieGenreQuery();
   const showGenre = (genreIdList)  => {
     if (!genreData) return [];
@@ -24,24 +25,22 @@ const MovieCard = ({ movie }) => {
           <div className="card_noimage">이미지 준비중</div>
         )}
       </div>
-      <Link to={`/movies/${movie.id}`} className="card_link">
-        <div className='overlay'>
-          <h1>{movie.title}</h1>
-          <div className='genre'>
-              {showGenre(movie.genre_ids).map((id) => (
-                  <Badge bg='danger'>{id}</Badge>
-              ))}
-          </div>
-          <div className='vote_averge'>{movie.vote_averge}</div>
-          <div className="card_point">
-            {pointAvarage}
-            <span>/10</span>
-          </div>
-          <div className={movie.adult?'adult over18':'adult under18'}>
-              {movie.adult?'over18':'under18'}
-          </div>
+      <div className='overlay' onClick={() => navigate(`/movies/${movie.id}`)}>
+        <h1>{movie.title}</h1>
+        <div className='genre'>
+            {showGenre(movie.genre_ids).map((id) => (
+                <Badge bg='danger'>{id}</Badge>
+            ))}
         </div>
-      </Link>
+        <div className='vote_averge'>{movie.vote_averge}</div>
+        <div className="card-point">
+          {pointAvarage}
+          <span>/10</span>
+        </div>
+        <div className={movie.adult?'adult over18':'adult under18'}>
+            {movie.adult?'over18':'under18'}
+        </div>
+      </div>
     </div>
   )
 }
